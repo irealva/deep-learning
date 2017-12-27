@@ -93,8 +93,9 @@ class NeuralNetwork(object):
         # TODO: Backpropagated error terms - Replace these values with your calculations. CHANGING derivative
         output_error_term = error * 1 # it is the same since the activation function is the identity in this case
         
-        hidden_error = np.dot(self.weights_hidden_to_output, output_error_term)
-        #hidden_error = np.dot(output_error_term, self.weights_hidden_to_output.T)
+        #Although the next two lines for hidden_error work only the second one is correct. First one will produce errors with more hidden layers
+        #hidden_error = np.dot(self.weights_hidden_to_output, output_error_term)
+        hidden_error = np.dot(output_error_term, self.weights_hidden_to_output.T)
         
         hidden_error_term = hidden_error * hidden_outputs * (1 - hidden_outputs)
         
