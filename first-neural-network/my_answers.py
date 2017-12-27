@@ -99,10 +99,10 @@ class NeuralNetwork(object):
         hidden_error_term = hidden_error * hidden_outputs * (1 - hidden_outputs)
         
         # Weight step (hidden to output)
-        delta_weights_h_o = output_error_term.T * hidden_outputs[:, None]
+        delta_weights_h_o += output_error_term * hidden_outputs[:, None]
  
         # Weight step (input to hidden)
-        delta_weights_i_h += hidden_error_term.T * X[:, None]
+        delta_weights_i_h += hidden_error_term * X[:, None]
                 
         return delta_weights_i_h, delta_weights_h_o
 
